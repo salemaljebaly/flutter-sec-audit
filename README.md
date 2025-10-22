@@ -195,16 +195,39 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.6'
+
       - name: Build APK
         run: flutter build apk --release
-      - name: Install FlutterSecAudit
-        run: pip install fluttersec
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Clone FlutterSecAudit
+        run: git clone https://github.com/salemaljebaly/flutter-sec-audit.git
+
+      - name: Install dependencies
+        run: |
+          cd flutter-sec-audit
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
       - name: Run security scan
         run: |
-          fluttersec scan build/app/outputs/flutter-apk/app-release.apk \
+          cd flutter-sec-audit
+          source venv/bin/activate
+          python3 -m fluttersec.cli scan ../build/app/outputs/flutter-apk/app-release.apk \
             --fail-on critical \
             --format json \
-            --output security-report.json
+            --output ../security-report.json
+
       - name: Upload report
         uses: actions/upload-artifact@v2
         with:

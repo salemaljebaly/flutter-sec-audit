@@ -44,9 +44,16 @@ htmlcov/
 *.apk
 *.ipa
 fluttersec_*/
+
+# Generated reports (should not be committed)
+*.html
+!docs/*.html
 examples/*.html
 examples/*.json
 examples/*.md
+report.html
+security-report.*
+results.json
 
 # OS
 .DS_Store

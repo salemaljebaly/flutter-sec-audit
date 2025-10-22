@@ -16,7 +16,7 @@ Best for development and testing.
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/yourusername/flutter-sec-audit.git
+git clone https://github.com/salemaljebaly/flutter-sec-audit.git
 cd flutter-sec-audit
 
 # 2. Create virtual environment
@@ -65,7 +65,7 @@ For contributors and developers:
 
 ```bash
 # 1. Clone and setup
-git clone https://github.com/yourusername/flutter-sec-audit.git
+git clone https://github.com/salemaljebaly/flutter-sec-audit.git
 cd flutter-sec-audit
 python3 -m venv venv
 source venv/bin/activate
