@@ -1,0 +1,61 @@
+[tool.poetry]
+name = "fluttersec"
+version = "0.1.0"
+description = "Automated security scanner for Flutter apps with attack simulation and detailed remediation"
+authors = ["Lamah <your-email@example.com>"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/yourusername/flutter-sec-audit"
+repository = "https://github.com/yourusername/flutter-sec-audit"
+keywords = ["flutter", "security", "android", "ios", "reverse-engineering", "apk", "ipa"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Security",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.13",
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+click = "^8.1.7"
+rich = "^13.7.0"
+pyyaml = "^6.0.1"
+jinja2 = "^3.1.3"
+plotly = "^5.18.0"
+python-magic = "^0.4.27"
+tabulate = "^0.9.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+black = "^23.12.1"
+ruff = "^0.1.9"
+mypy = "^1.8.0"
+
+[tool.poetry.scripts]
+fluttersec = "fluttersec.cli:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ['py310']
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "-v --cov=fluttersec --cov-report=term-missing"
